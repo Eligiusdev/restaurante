@@ -97,6 +97,8 @@ export function load(){
   for(const item of CATALOGO.filter(isVariant))if(!S.productos.some(p=>p.nombre===item.nombre))S.productos.push({...item,id:uid('pr'),disponible:legacy.disponible});
   changed=true;
  }
+ const renamedProducts={'Hamburguesa Cyber Trufa':'Hamburguesa de trufa','Mocktail neón cítrico':'Mocktail cítrico de la casa'};
+ for(const product of S.productos||[])if(renamedProducts[product.nombre]){product.nombre=renamedProducts[product.nombre];changed=true}
  for(const p of S.productos||[]){
   if(p.categoria==='Platos principales'){p.categoria='Platos Principales';changed=true}
   const dir=IMAGE_CATEGORIES[p.categoria]||'entradas',item=CATALOGO.find(x=>x.nombre===p.nombre),legacyImage=LEGACY_IMAGE_FILES[p.nombre];

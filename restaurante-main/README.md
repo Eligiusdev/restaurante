@@ -1,43 +1,55 @@
 # MESASERVIDA
 
-Panel web para gestión de sala y reservas de restaurante. Se ejecuta como aplicación estática con módulos JavaScript nativos y guarda la demostración en LocalStorage.
+Panel web estático para reservas y control de sala de un restaurante. Usa HTML, Tailwind por CDN, módulos JavaScript y LocalStorage. Los datos no se comparten entre navegadores y el pago es simulado: no se mueve dinero.
 
-## Ejecutar
+## Ejecutar desde `restaurante-main/`
 
-Sirve la carpeta `restaurante/` desde `localhost` (por ejemplo, con la extensión Live Server); Web Crypto requiere un contexto seguro para derivar contraseñas. No requiere paquetes adicionales. La primera visita carga 60 mesas: 15 en Terraza, 15 en Salón principal, 15 en Barra y 15 en el Salón Ejecutivo con Gran Vista. En instalaciones existentes se agregan solo las mesas faltantes, sin cambiar IDs ni reservas.
+Requiere Node.js 20+ para las pruebas. La app no tiene dependencias de npm.
 
-## Acceso Demo
+```bash
+cd restaurante-main
+python3 -m http.server 8000
+```
 
-El registro desde la pantalla de acceso solicita nombre, cédula, correo, teléfono y contraseña. La reserva precarga esos datos y, si falta el perfil, ofrece «Registrarse ahora» sin perder mesa, horario ni campos. Este alta rápida requiere una sesión de cliente y permite completar cuentas antiguas. El panel de administración usa `admin@restaurant.com` / `admin123`. En el navegador se deriva la contraseña de cliente con PBKDF2, pero el control de acceso sigue siendo solo demostrativo: cualquier persona que controle el navegador puede modificar LocalStorage. No uses credenciales reales; en producción autentica y autoriza en el servidor.
+Abre <http://localhost:8000>. También funciona con Live Server. No abras `index.html` con `file://`: el navegador no carga correctamente los módulos ES de ese modo.
+
+Para validar reglas y cálculos:
+
+```bash
+node tests/run.mjs
+```
+
+Desde la raíz del repositorio:
+
+```bash
+node restaurante-main/tests/run.mjs
+```
+
+## GitHub Pages
+
+Publica la rama/carpeta configurada en GitHub Pages y conserva el directorio `restaurante-main/`. Para este repositorio de proyecto, la ruta esperada es:
+
+`https://eligiusdev.github.io/restaurante/restaurante-main/`
+
+El HTML y los recursos usan rutas relativas a `restaurante-main/`; no necesitan una ruta fija del dominio.
+
+## Acceso de demostración
+
+El panel de anfitrión usa `admin@restaurant.com` / `admin123`. El registro de clientes y las reservas se guardan en LocalStorage. No uses datos ni contraseñas reales: el control de acceso es demostrativo y puede modificarse desde el navegador.
+
+La app precarga 60 mesas distribuidas en Terraza, Salón principal, Barra y Salón Ejecutivo · Gran Vista. El Salón Ejecutivo tiene un consumo mínimo de $180.000 COP por mesa, pagadero en el restaurante y separado del anticipo.
 
 ## Imágenes del menú
 
-Agrega imágenes optimizadas en WebP, con proporción horizontal recomendada 4:3, dentro de:
+Las imágenes de carta están dentro de `assets/images/dishes/`, por categoría. Sus nombres están en minúsculas, sin espacios ni tildes; el catálogo de rutas está en `js/catalog.js`. Las imágenes que falten usan otra imagen local de la misma categoría.
 
-```text
-assets/images/dishes/
-├── entradas/
-├── principales/
-├── pastas/
-├── hamburguesas/
-├── bebidas/
-└── postres/
-```
+## Reservas y pago
 
-Cada producto guarda `imagen_url` como ruta relativa, por ejemplo `assets/images/dishes/bebidas/Jugo-natural.jpg`. Agrega tus imágenes en las carpetas indicadas por el catálogo. En la administración del menú se puede asignar la ruta y editar el prompt visual. Las rutas relativas funcionan al servir la carpeta desde `localhost` (los módulos ES no cargan desde `file://`).
+Los turnos duran dos horas. El anticipo obligatorio de $50.000 COP, los métodos PSE, Nequi/Daviplata y tarjeta, y el reloj acelerable son simulaciones locales. El método seleccionado queda guardado en el pago y se muestra en la confirmación. La ventana de llegada se configura en el panel; vencida, el prototipo libera la mesa y marca el anticipo como retenido según la política simulada.
 
-El catálogo fuente está en `js/catalog.js` y exporta `CATALOGO`: cada elemento incluye `id`, `nombre`, `tipo` cuando aplica, `descripcion`, `precio` (entero en COP), `categoria`, `disponible`, `imagen_prompt` (inglés) e `imagen_url`. Incluye jugos de naranja, mandarina, maracuyá, fresa, mora, mango, lulo y piña, con preparación en agua o leche según corresponda, además de Lager, IPA cítrica, Amber Ale y Stout. Los prompts comparten especificaciones de fotografía comercial, lente de 85 mm, apertura f/2.8, luz lateral suave y fondo cinematográfico oscuro, además de detalles particulares para cada producto.
+Esto no cobra ni retiene fondos y no reemplaza términos de cancelación o reembolso. Para operar con clientes reales hacen falta backend transaccional, pasarela y webhook, autenticación de servidor, protección de datos y política legal revisada.
 
-## Reservas
+## Documentación
 
-El flujo incluye turnos de dos horas, anticipo simulado fijo de $50.000 COP, selección obligatoria de método de pago (PSE, Nequi/Daviplata o tarjeta), validación de correo y documento normalizados, cliente único con reserva activa y 30 minutos de gracia desde la hora programada. El bloqueo previo al pago dura tres minutos. Los intervalos son semiabiertos: un turno que acaba a las 15:00 no bloquea el que empieza a las 15:00. El pago y la llegada vuelven a validar los cruces para reducir conflictos entre pestañas. Las mesas ejecutivas tienen un consumo mínimo de $180.000 COP por mesa, deducible de la cuenta y separado del anticipo; el checkout refleja ambos conceptos y el total inicial. El pago es una simulación: no se mueve dinero. El dock «Simulador de tiempo» permite avanzar el reloj o fijar una hora exacta para probar solapamientos, llegadas y liberaciones. Los cambios se guardan en LocalStorage en este navegador.
-
-## Pruebas
-
-`node tests/run.mjs` (Node 20+, sin dependencias) valida las reglas de negocio: disponibilidad y estado de mesas, cliente único por correo/documento, capacidad, método de pago obligatorio y persistido, protección frente a doble pago, pago fallido, vencimiento, llegada, cancelación y ventana configurable.
-
-## Migración a producción
-
-El prototipo persiste en LocalStorage; cada navegador mantiene su propia copia y no ofrece atomicidad entre clientes. Para producción, mover mesas, reservas, pagos y bloqueos a PostgreSQL/Supabase. Guardar `fecha_inicio` y `fecha_fin` como `timestamptz`, proteger las reservas pendientes/confirmadas/en curso con una restricción de exclusión sobre `tstzrange(fecha_inicio, fecha_fin, '[)')` por `mesa_id` (con `btree_gist`) y crear reservas dentro de una transacción del servidor. La llegada debe comprobar el límite de gracia y un job/cron debe expirar no-shows y cerrar turnos vencidos. Crear el intento de pago en el servidor, confirmar el anticipo con webhook firmado de Wompi o PayU y guardar sus referencias e idempotency keys; el consumo mínimo se registra como saldo aplicable a la cuenta final, no como anticipo online.
-
-El pago y el reloj simulado son demostrativos. Para producción se requiere backend, pasarela real y un proceso de expiración del lado del servidor.
+- [Problema que resuelve](docs/PROBLEMA.md): situación operativa, funciones y antes/después.
+- [Modelo de ingresos](docs/INGRESOS.md): fórmulas editables, supuestos, alternativas de negocio y ruta para facturar.

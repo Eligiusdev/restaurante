@@ -6,10 +6,13 @@
 |---|---|---|
 | Checkout con método obligatorio, guardado en el pago y visible en confirmación/detalle | Implementada | PSE, Nequi/Daviplata y tarjeta son opciones simuladas; el botón muestra carga y el resultado. |
 | Bloqueo de pago de tres minutos, prevención de doble envío y mensajes de disponibilidad | Implementada | Incluye pruebas de método requerido, doble pago y estados de mesa. |
-| Plano responsive de mesas por estado y capacidad | Implementada | SVG propio con sillas, filtros y zonas desplazables en móvil. |
-| Dashboard con dona SVG, ocupación por zona, llegadas y tendencia de reservas de 24 h | Implementada | La tendencia usa marcas de tiempo ya guardadas; no es una serie histórica de métricas. |
-| Contraste oscuro, foco visible y uso por teclado | Implementada parcialmente | Se mejoraron controles, diálogos, radios y áreas táctiles; falta auditoría con lectores de pantalla. |
-| Menú con imágenes 4:3, carga diferida y estado vacío | Implementada | Usa los recursos y fallbacks que ya tenía el proyecto. |
+| Plano responsive de mesas por estado y capacidad | Implementada | SVG con sillas, formas por capacidad, anillo de reserva, filtros y zonas plegables en móvil. |
+| Rediseño editorial cálido | Implementada | Fraunces y DM Sans, superficies sin glass, estados terrenales, texturas discretas y favicon propio. |
+| Dashboard con ocupación protagonista, dona SVG y agenda | Implementada | Las métricas se calculan desde el LocalStorage de este navegador, no desde una sincronización en tiempo real. |
+| Foco visible, contraste y controles táctiles | Implementada parcialmente | Se ajustaron estados, formularios y navegación; falta auditoría completa con lectores de pantalla. |
+| Menú con imágenes locales 4:3 y archivos normalizados | Implementada | Rutas relativas y fallbacks locales; imágenes derivadas pendientes deben agregarse al catálogo para mostrarse. |
+| Pantalla del problema y calculadora de recuperación | Implementada | Los importes son escenarios basados en supuestos editables, no resultados garantizados. |
+| Documentación de problema y modelo de ingresos | Implementada | Ver `docs/PROBLEMA.md` y `docs/INGRESOS.md`. |
 
 ## Próximas mejoras priorizadas
 

@@ -1,19 +1,19 @@
 const CATEGORY_PATHS={Entradas:'entradas','Platos Principales':'principales',Pastas:'pastas',Hamburguesas:'hamburguesas',Bebidas:'bebidas',Postres:'postres'};
 const IMAGE_FILES={
- Entradas:{'Ceviche de camarón al maracuyá':'Ceviche-de-camaron.jpg','Empanadas de la casa':'Empanadas-de-la-casa.jpg','Carpaccio de res y alcaparras':'Carpaccio-de-res.jpg','Burrata con tomate heirloom':'Ensalada-de-burrata.jpg'},
- 'Platos Principales':{'Lomo al vino tinto':'Lomo-al-vino-tinto.jpeg','Salmón en costra de sésamo':'Salmón-a-la-plancha.jpg','Pollo al romero y limón':'Pollo-al-romero.jpg','Cerdo glaseado de panela':'Bandeja-de-cerdo.jpg'},
- Pastas:{'Fettuccine Alfredo':'Fettuccine-Alfredo.jpg','Lasaña boloñesa':'Lasaña-boloñesa.jpg','Ravioles de espinaca':'Ravioles-de-espinaca.jpg','Spaghetti pomodoro':'Spaghetti-pomodoro.jpg'},
- Hamburguesas:{'Hamburguesa Cyber Trufa':'Clasica.jpg','Hamburguesa doble queso ahumado':'Doble-queso.jpg','Hamburguesa BBQ bacon crujiente':'BBQ-bacon.jpg','Hamburguesa vegetal umami':'Vegetal.jpg'},
- Bebidas:{'Limonada de coco':'Limonada-de-coco.jpg','Copa de vino':'Copa-de-vino.jpg','Mocktail neón cítrico':'Jugo-natural.jpg'},
- Postres:{'Brownie tibio con helado':'Brownie-con-helado.jpg','Tiramisú de café':'Tiramisu.jpg','Cheesecake de maracuyá':'Cheesecake-de-maracuya.jpg','Flan de caramelo':'Flan-de-caramelo.jpg'}
+ Entradas:{'Ceviche de camarón al maracuyá':'ceviche-de-camaron.jpg','Empanadas de la casa':'empanadas-de-la-casa.jpg','Carpaccio de res y alcaparras':'carpaccio-de-res.jpg','Burrata con tomate heirloom':'ensalada-de-burrata.jpg'},
+ 'Platos Principales':{'Lomo al vino tinto':'lomo-al-vino-tinto.jpeg','Salmón en costra de sésamo':'salmon-a-la-plancha.jpg','Pollo al romero y limón':'pollo-al-romero.jpg','Cerdo glaseado de panela':'bandeja-de-cerdo.jpg'},
+ Pastas:{'Fettuccine Alfredo':'fettuccine-alfredo.jpg','Lasaña boloñesa':'lasana-bolonesa.jpg','Ravioles de espinaca':'ravioles-de-espinaca.jpg','Spaghetti pomodoro':'spaghetti-pomodoro.jpg'},
+ Hamburguesas:{'Hamburguesa de trufa':'clasica.jpg','Hamburguesa doble queso ahumado':'doble-queso.jpg','Hamburguesa BBQ bacon crujiente':'bbq-bacon.jpg','Hamburguesa vegetal umami':'vegetal.jpg'},
+ Bebidas:{'Limonada de coco':'limonada-de-coco.jpg','Copa de vino':'copa-de-vino.jpg','Mocktail cítrico de la casa':'jugo-natural.jpg'},
+ Postres:{'Brownie tibio con helado':'brownie-con-helado.jpg','Tiramisú de café':'tiramisu.jpg','Cheesecake de maracuyá':'cheesecake-de-maracuya.jpg','Flan de caramelo':'flan-de-caramelo.jpg'}
 };
 export const LEGACY_IMAGE_FILES={
- 'Ceviche de camarón':'Ceviche-de-camaron.jpg','Carpaccio de res':'Carpaccio-de-res.jpg','Ensalada de burrata':'Ensalada-de-burrata.jpg',
- 'Salmón a la plancha':'Salmón-a-la-plancha.jpg','Pollo al romero':'Pollo-al-romero.jpg','Bandeja de cerdo':'Bandeja-de-cerdo.jpg',
- 'Clásica':'Clasica.jpg','Doble queso':'Doble-queso.jpg','BBQ bacon':'BBQ-bacon.jpg','Vegetal':'Vegetal.jpg','Copa de vino':'Copa-de-vino.jpg',
- 'Brownie con helado':'Brownie-con-helado.jpg','Tiramisú':'Tiramisu.jpg'
+ 'Ceviche de camarón':'ceviche-de-camaron.jpg','Carpaccio de res':'carpaccio-de-res.jpg','Ensalada de burrata':'ensalada-de-burrata.jpg',
+ 'Salmón a la plancha':'salmon-a-la-plancha.jpg','Pollo al romero':'pollo-al-romero.jpg','Bandeja de cerdo':'bandeja-de-cerdo.jpg',
+ 'Clásica':'clasica.jpg','Doble queso':'doble-queso.jpg','BBQ bacon':'bbq-bacon.jpg','Vegetal':'vegetal.jpg','Copa de vino':'copa-de-vino.jpg',
+ 'Brownie con helado':'brownie-con-helado.jpg','Tiramisú':'tiramisu.jpg'
 };
-const PHOTO_STYLE='Professional commercial food photography, macro close-up shot, 85mm lens, f/2.8 depth of field. Soft studio side lighting, cinematic dark atmospheric background, subtle glowing reflections.';
+const PHOTO_STYLE='Warm editorial food photography, 85mm lens, f/2.8 depth of field. Soft natural side light, tactile linen and earthy stone, honest ingredient color, gentle shadows.';
 const slug=value=>value.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
 const prompt=details=>`${PHOTO_STYLE} ${details} Refined contemporary restaurant plating, realistic edible ingredients, natural appetizing color, precise focus on the food, no text, no typography, no watermark.`;
 const entries=[
@@ -29,7 +29,7 @@ const entries=[
  ['Lasaña boloñesa','Capas de pasta fresca, ragú de res cocido lentamente y queso gratinado.',41000,'Pastas','A clean-cut square of layered fresh pasta with rich slow-braised beef ragù, molten golden cheese, visible tender pasta sheets, bubbling edges and fresh basil.'],
  ['Ravioles de espinaca','Ravioles rellenos de espinaca y ricotta con mantequilla dorada y salvia.',39000,'Pastas','Plump handmade spinach-and-ricotta ravioli with delicate ridged edges, browned butter gloss, crisp sage leaves, toasted hazelnut crumbs and fine parmesan.'],
  ['Spaghetti pomodoro','Spaghetti al dente con tomate maduro, ajo, albahaca y aceite de oliva.',34000,'Pastas','Al dente spaghetti twirled into a tall nest, coated in bright slow-simmered tomato sauce with glossy olive oil, garlic, fresh basil leaves and shaved aged parmesan.'],
- ['Hamburguesa Cyber Trufa','Carne de res jugosa, queso fundido, trufa, cebolla caramelizada y pan brioche.',45000,'Hamburguesas','A juicy thick beef patty with a charred crust, molten aged cheese, glossy black truffle aioli, caramelized onions and a toasted brioche bun with crisp lettuce.'],
+ ['Hamburguesa de trufa','Carne de res jugosa, queso fundido, trufa, cebolla caramelizada y pan brioche.',45000,'Hamburguesas','A juicy thick beef patty with a charred crust, molten aged cheese, glossy black truffle aioli, caramelized onions and a toasted brioche bun with crisp lettuce.'],
  ['Hamburguesa doble queso ahumado','Doble carne a la parrilla con dos quesos ahumados y salsa de la casa.',42000,'Hamburguesas','Two stacked flame-grilled beef patties with dripping smoked cheddar and gouda, glossy house sauce, pickled red onion and a deeply toasted sesame brioche bun.'],
  ['Hamburguesa BBQ bacon crujiente','Res a la parrilla, tocineta crujiente, queso y salsa BBQ de panela.',36000,'Hamburguesas','A flame-seared beef burger topped with crisp bacon shards, melted cheese and dark panela barbecue glaze, toasted bun, fresh lettuce and a juicy realistic patty texture.'],
  ['Hamburguesa vegetal umami','Medallón vegetal dorado con hongos, queso, rúgula y mayonesa de ajo.',31000,'Hamburguesas','A golden seared mushroom-and-legume patty with a rich textured bite, melted cheese, peppery arugula, roasted garlic aioli and a soft toasted whole-grain bun.'],
@@ -50,7 +50,7 @@ const entries=[
  ['Cerveza artesanal IPA cítrica','IPA de amargor equilibrado, aromas cítricos y espuma cremosa.',16000,'Bebidas','A hazy amber craft IPA with a creamy ivory head, rising bubbles, citrus-peel aroma suggested by fresh grapefruit and orange zest, condensation on a tulip glass and green hops.','Cerveza artesanal · IPA cítrica'],
  ['Cerveza artesanal Amber Ale','Amber ale cobriza con notas de caramelo, malta tostada y espuma suave.',16000,'Bebidas','A clear copper-amber craft ale with ruby highlights, fine carbonation, a soft cream head, chilled glass condensation and toasted caramel malt with amber hops nearby.','Cerveza artesanal · Amber Ale'],
  ['Cerveza artesanal Stout','Stout oscura de cuerpo sedoso, notas de café y espuma color canela.',16000,'Bebidas','A nearly black silky stout with a dense tan crema head, subtle espresso-brown highlights, cold condensation on a stout glass and roasted coffee beans with dark malt nearby.','Cerveza artesanal · Stout'],
- ['Mocktail neón cítrico','Bebida sin alcohol de cítricos, hierbabuena y soda con burbujas.',16000,'Bebidas','A sparkling non-alcoholic citrus mocktail with translucent lime and grapefruit layers, rising soda bubbles, fresh mint, a thin citrus twist and subtle emerald reflections.','Mocktail · Cítrico sin alcohol'],
+ ['Mocktail cítrico de la casa','Bebida sin alcohol de cítricos, hierbabuena y soda con burbujas.',16000,'Bebidas','A sparkling non-alcoholic citrus mocktail with translucent lime and grapefruit layers, rising soda bubbles, fresh mint and a thin citrus twist.','Mocktail · Cítrico sin alcohol'],
  ['Brownie tibio con helado','Brownie de chocolate tibio con centro húmedo y helado de vainilla.',16000,'Postres','A warm dark-chocolate brownie with a moist fudgy center and delicate crackled top, slowly melting vanilla bean ice cream, chocolate gloss and toasted cocoa nibs.'],
  ['Tiramisú de café','Capas de mascarpone y café con cacao espolvoreado al momento.',18000,'Postres','A precise layered tiramisu slice with airy mascarpone cream, coffee-soaked sponge, fine cocoa dust, visible delicate layers and a few dark espresso beans.'],
  ['Cheesecake de maracuyá','Cheesecake cremoso con coulis brillante de maracuyá y base crocante.',17000,'Postres','A smooth ivory cheesecake slice with a crisp golden crumb base, glossy amber passion-fruit coulis, visible seeds, a clean cut edge and tiny citrus zest.'],
@@ -66,12 +66,12 @@ export const CATALOGO=entries.map(([nombre,descripcion,precio,categoria,details,
  tipo,
  disponible:true,
  imagen_prompt:prompt(details),
- imagen_url:`assets/images/dishes/${CATEGORY_PATHS[categoria]}/${IMAGE_FILES[categoria]?.[nombre]||'Jugo-natural.jpg'}`
+ imagen_url:`assets/images/dishes/${CATEGORY_PATHS[categoria]}/${IMAGE_FILES[categoria]?.[nombre]||'jugo-natural.jpg'}`
 }));
 
 for(const producto of CATALOGO){
- if(producto.nombre.startsWith('Jugo natural')){producto.imagen_url=`assets/images/dishes/bebidas/${slug(producto.nombre)}.webp`;producto.imagen_fallback='assets/images/dishes/bebidas/Jugo-natural.jpg'}
- if(producto.nombre.startsWith('Cerveza artesanal')){producto.imagen_url=`assets/images/dishes/bebidas/${slug(producto.nombre)}.webp`;producto.imagen_fallback='assets/images/dishes/bebidas/Cerveza%20-artesanal.jpg'}
+ if(producto.nombre.startsWith('Jugo natural')){producto.imagen_url=`assets/images/dishes/bebidas/${slug(producto.nombre)}.webp`;producto.imagen_fallback='assets/images/dishes/bebidas/jugo-natural.jpg'}
+ if(producto.nombre.startsWith('Cerveza artesanal')){producto.imagen_url=`assets/images/dishes/bebidas/${slug(producto.nombre)}.webp`;producto.imagen_fallback='assets/images/dishes/bebidas/cerveza-artesanal.jpg'}
 }
 
 export const buildImagePrompt=(nombre,categoria)=>prompt(`A beautifully plated ${nombre}, unmistakably presented as ${categoria.toLowerCase()}, with realistic ingredients and appetizing texture.`);
