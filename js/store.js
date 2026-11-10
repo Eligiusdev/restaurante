@@ -18,7 +18,7 @@ export const cop=n=>'$'+Number(n).toLocaleString('es-CO')+' COP';
 export const hora=t=>new Date(t).toLocaleString('es-CO',{timeZone:'America/Bogota',dateStyle:'short',timeStyle:'medium'});
 let S;
 export const db=()=>S;
-export const now=()=>Date.now()+(S?S.config.offset:0);
+export const now=()=>Date.now()+(S?.session?.rol==='admin'?Number(S.config.offset)||0:0);
 const save=()=>localStorage.setItem(KEY,JSON.stringify(S));
 export const commit=()=>{save();emit('change')};
 const normalizarCorreo=correo=>String(correo||'').replace(/\s/g,'').toLowerCase();
@@ -49,7 +49,7 @@ export async function registerClient({nombre,correo,documento,telefono,password}
  if(matched&&(normalizarCorreo(matched.correo)!==email||normalizarDocumento(matched.documento)!==profile.documento))throw new Error('Ese correo o cédula ya pertenece a otro perfil. Verifica los datos.');
  const credential=await hashPassword(password),user={id:matched?.id||uid('u'),...profile,rol:'cliente',...credential};
  if(matched)Object.assign(matched,profile);else S.clientes.push({id:user.id,...profile});
- S.users.push(user);S.session={id:user.id,...profile,rol:user.rol};S.rol='cliente';commit();return S.session
+ S.users.push(user);S.session={id:user.id,...profile,rol:user.rol};S.rol='cliente';S.config.offset=0;commit();return S.session
 }
 export function completeClientProfile(profile){
  const session=currentSession();if(!session||session.rol!=='cliente')throw new Error('Inicia sesión como cliente para crear tu perfil.');
@@ -69,9 +69,9 @@ export async function login({rol,correo,password}){
  if(!user||user.rol!=='cliente')throw new Error('No encontramos una cuenta de cliente con ese correo.');
  const credential=await hashPassword(password,user.salt);
  if(credential.hash!==user.hash)throw new Error('Correo o contraseña incorrectos.');
- S.session={id:user.id,nombre:user.nombre,correo:user.correo,documento:user.documento||'',telefono:user.telefono||'',rol:user.rol};S.rol=user.rol;commit();return S.session
+ S.session={id:user.id,nombre:user.nombre,correo:user.correo,documento:user.documento||'',telefono:user.telefono||'',rol:user.rol};S.rol=user.rol;if(user.rol!=='admin')S.config.offset=0;commit();return S.session
 }
-export function logout(){S.session=null;S.rol='cliente';commit()}
+export function logout(){S.session=null;S.rol='cliente';S.config.offset=0;commit()}
 export function load(){
  try{S=JSON.parse(localStorage.getItem(KEY))}catch{S=null}
  if(!S||!S.mesas){S=seed();save();return}
@@ -84,6 +84,7 @@ export function load(){
   if(user)for(const field of['nombre','correo','documento','telefono'])if(user[field]&&S.session[field]!==user[field]){S.session[field]=user[field];changed=true}
  }
  if(!S.session||!['admin','cliente'].includes(S.session.rol)){if(S.session){S.session=null;changed=true}S.rol='cliente'}else S.rol=S.session.rol;
+ if(S.config&&S.session?.rol!=='admin'&&Number(S.config.offset)!==0){S.config.offset=0;changed=true}
  const expansions=[
     ['Jugo natural',p=>p.categoria==='Bebidas'&&p.nombre.startsWith('Jugo natural')],
   ['Jugo de mango y maracuyá',p=>p.categoria==='Bebidas'&&p.nombre.startsWith('Jugo natural')],
@@ -108,6 +109,7 @@ export function load(){
   if(item?.imagen_fallback&&p.imagen_fallback!==item.imagen_fallback){p.imagen_fallback=item.imagen_fallback;changed=true}
   if(!p.imagen_prompt){p.imagen_prompt=item?.imagen_prompt||buildImagePrompt(p.nombre,p.categoria);changed=true}
   if(!p.tipo&&item?.tipo){p.tipo=item.tipo;changed=true}
+  for(const field of['tiempo_preparacion','porcion','alergenos'])if(item?.[field]!==undefined&&p[field]===undefined){p[field]=item[field];changed=true}
  }
  for(const p of S.pagos||[])if(!Object.hasOwn(p,'metodo')){p.metodo='No especificado';changed=true}
  if(!S.config)S.config={offset:0};
@@ -139,7 +141,7 @@ export function load(){
  }
  if(changed)save()
 }
-export function reset(){localStorage.removeItem(KEY);load();emit('change')}
+export function reset(){if(currentSession()?.rol!=='admin')throw new Error('Solo un administrador puede restablecer los datos.');const session=currentSession();localStorage.removeItem(KEY);load();S.session=session;S.rol='admin';save();emit('change')}
 function seed(){
  const t=Date.now(),mesas=SECCIONES.flatMap((section,sectionIndex)=>Array.from({length:15},(_,i)=>{const numero=sectionIndex*15+i+1;return{id:'m'+numero,numero,capacidad:CAPACIDADES[i%CAPACIDADES.length],estado:'disponible',ubicacion:section.ubicacion,consumo_minimo:section.consumo_minimo}}));
  const clientes=[['Camila Restrepo','1020304050','camila@correo.com','3101234567'],['Andrés Gómez','71234567','andres@correo.com','3209876543'],['Laura Posada','43987654','laura@correo.com','3005551234'],['Julián Ríos','1037654321','julian@correo.com','3117778899'],['Marta Cano','32456789','marta@correo.com','3151112233']].map((c,i)=>({id:'c'+(i+1),nombre:c[0],documento:c[1],correo:c[2],telefono:c[3]}));

@@ -57,6 +57,30 @@ const entries=[
  ['Flan de caramelo','Flan de vainilla sedoso con caramelo oscuro y textura temblorosa.',14000,'Postres','A silky vanilla custard flan with a delicate trembling texture, dark amber caramel cascading down its smooth sides, a small caramel pool and vanilla specks.']
 ];
 
+const PRODUCT_DETAILS={
+ 'Ceviche de camarón al maracuyá':{tiempo_preparacion:20,porcion:'250 g',alergenos:'Crustáceos'},
+ 'Empanadas de la casa':{tiempo_preparacion:15,porcion:'3 unidades'},
+ 'Carpaccio de res y alcaparras':{tiempo_preparacion:12,porcion:'180 g',alergenos:'Leche'},
+ 'Burrata con tomate heirloom':{tiempo_preparacion:10,porcion:'220 g',alergenos:'Leche'},
+ 'Lomo al vino tinto':{tiempo_preparacion:28,porcion:'300 g'},
+ 'Salmón en costra de sésamo':{tiempo_preparacion:24,porcion:'280 g',alergenos:'Pescado, sésamo'},
+ 'Pollo al romero y limón':{tiempo_preparacion:25,porcion:'300 g'},
+ 'Cerdo glaseado de panela':{tiempo_preparacion:30,porcion:'300 g'},
+ 'Fettuccine Alfredo':{tiempo_preparacion:18,porcion:'350 g',alergenos:'Gluten, leche'},
+ 'Lasaña boloñesa':{tiempo_preparacion:22,porcion:'350 g',alergenos:'Gluten, leche'},
+ 'Ravioles de espinaca':{tiempo_preparacion:18,porcion:'300 g',alergenos:'Gluten, leche'},
+ 'Spaghetti pomodoro':{tiempo_preparacion:16,porcion:'320 g',alergenos:'Gluten'},
+ 'Hamburguesa de trufa':{tiempo_preparacion:20,porcion:'1 unidad · 320 g',alergenos:'Gluten, leche'},
+ 'Hamburguesa doble queso ahumado':{tiempo_preparacion:20,porcion:'1 unidad · 380 g',alergenos:'Gluten, leche'},
+ 'Hamburguesa BBQ bacon crujiente':{tiempo_preparacion:18,porcion:'1 unidad · 340 g',alergenos:'Gluten, leche'},
+ 'Hamburguesa vegetal umami':{tiempo_preparacion:18,porcion:'1 unidad · 300 g',alergenos:'Gluten, leche'},
+ 'Limonada de coco':{tiempo_preparacion:8,porcion:'400 ml'},
+ 'Copa de vino':{tiempo_preparacion:3,porcion:'150 ml',alergenos:'Sulfitos'},
+ 'Brownie tibio con helado':{tiempo_preparacion:12,porcion:'180 g',alergenos:'Gluten, leche, huevo'},
+ 'Tiramisú de café':{tiempo_preparacion:5,porcion:'160 g',alergenos:'Gluten, leche, huevo'},
+ 'Cheesecake de maracuyá':{tiempo_preparacion:5,porcion:'170 g',alergenos:'Gluten, leche, huevo'},
+ 'Flan de caramelo':{tiempo_preparacion:5,porcion:'150 g',alergenos:'Leche, huevo'}
+};
 export const CATALOGO=entries.map(([nombre,descripcion,precio,categoria,details,tipo],index)=>({
  id:`pr${index+1}`,
  nombre,
@@ -64,6 +88,7 @@ export const CATALOGO=entries.map(([nombre,descripcion,precio,categoria,details,
  precio,
  categoria,
  tipo,
+ ...PRODUCT_DETAILS[nombre],
  disponible:true,
  imagen_prompt:prompt(details),
  imagen_url:`assets/images/dishes/${CATEGORY_PATHS[categoria]}/${IMAGE_FILES[categoria]?.[nombre]||'jugo-natural.jpg'}`

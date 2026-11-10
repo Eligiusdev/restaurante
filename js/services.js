@@ -9,6 +9,7 @@ const MENSAJE_MESA_NO_DISPONIBLE='No es posible reservar esta mesa porque actual
 const MENSAJE_RESERVA_ACTIVA='Ya tienes una reserva activa. Para realizar otra, primero debes cancelar o finalizar la reserva existente';
 export const norm={correo:s=>String(s).replace(/\s/g,'').toLowerCase(),doc:s=>String(s).replace(/[.\s-]/g,''),tel:s=>String(s).replace(/[\s-]/g,'')};
 export const esAdmin=()=>D.currentSession()?.rol==='admin';
+const exigirAdmin=()=>{if(!esAdmin())throw{msg:'Esta herramienta está disponible solo para administradores'}};
 export const mesa=id=>db().mesas.find(m=>m.id===id);
 export const res=id=>db().reservas.find(r=>r.id===id);
 export const pagoDe=id=>db().pagos.find(p=>p.id===id);
@@ -54,6 +55,7 @@ export function iniciarReserva(d){
  db().reservas.push(r);db().pagos.push({id:pid,reserva_id:r.id,monto:50000,moneda:'COP',estado:'pendiente',metodo:null,fecha_pago:null,referencia:null});commit();return r}
 export function abandonar(id){const r=res(id);if(!r||r.estado!=='pendiente_pago')return;const s=db();s.reservas=s.reservas.filter(x=>x.id!==id);s.pagos=s.pagos.filter(p=>p.reserva_id!==id);commit();toast('Reserva cancelada','warn')}
 export function pagar(id,falla,metodo){
+ if(falla)exigirAdmin();
  tick();const r=res(id);if(!r||r.estado!=='pendiente_pago')throw{msg:'El bloqueo de la mesa venció'};
  if(!METODOS_PAGO.includes(metodo))throw{msg:'Selecciona un método de pago para continuar'};
  const p=pagoDe(r.pago_id),n=now();if(p.estado!=='pendiente')throw{msg:'Este pago ya fue procesado'};p.metodo=metodo;
@@ -85,9 +87,10 @@ export function tick(){let ch=false;const n=now(),u=db().config.umbral*MIN;
    else if(r.fecha_vencimiento-n<u&&!r.avisada){r.avisada=true;ch=true;toast(`La reserva ${r.codigo_reserva} está próxima a vencer`,'warn')}}
     else if(r.estado==='en_curso'&&finReserva(r)<=n){r.estado='finalizada';r.fecha_finalizacion=n;ch=true;toast(`El turno de ${r.codigo_reserva} terminó; la mesa está disponible`,'ok')}}
  if(ch)commit()}
-export function adelantar(min){db().config.offset+=min*MIN;commit();tick()}
-export function simularHora(valor){const instante=fechaBogota(valor);if(!Number.isFinite(instante))throw{msg:'Selecciona una fecha y hora válidas'};db().config.offset=instante-Date.now();commit();tick();toast('Hora de demostración actualizada','warn')}
-export function restaurarHora(){db().config.offset=0;commit();tick();toast('Reloj real restaurado')}
+export function adelantar(min){exigirAdmin();db().config.offset+=min*MIN;commit();tick()}
+export function simularHora(valor){exigirAdmin();const instante=fechaBogota(valor);if(!Number.isFinite(instante))throw{msg:'Selecciona una fecha y hora válidas'};db().config.offset=instante-Date.now();commit();tick();toast('Hora de demostración actualizada','warn')}
+export function restaurarHora(){exigirAdmin();db().config.offset=0;commit();tick();toast('Reloj real restaurado')}
+export function restablecerDatos(){exigirAdmin();D.reset()}
 export function setConfig(k,v){const n=Number(v);if(!Number.isInteger(n)||n<=0)throw{msg:'Valor inválido'};db().config[k]=n;commit();toast('Configuración guardada')}
 export function guardarProducto(p){const e={};
  if(p.nombre.trim().length<3)e.nombre='Mínimo 3 caracteres';

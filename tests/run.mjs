@@ -9,6 +9,12 @@ const base=(o={})=>({nombre:'Pedro Pérez',documento:'9988776655',correo:'pedro@
 const est=id=>V.estadoMesa(V.mesa(id));
 let r;
 t('Seed: 60 mesas',()=>eq(D.db().mesas.length,60));
+t('El catálogo muestra metadatos y la migración los agrega a productos guardados',()=>{const product=D.db().productos.find(p=>p.nombre==='Ceviche de camarón al maracuyá');if(!product.tiempo_preparacion||!product.porcion||!product.alergenos)throw new Error('faltan datos de carta');const state=JSON.parse(mem['mesaservida.v1']),stored=state.productos.find(p=>p.nombre===product.nombre);delete stored.porcion;mem['mesaservida.v1']=JSON.stringify(state);D.load();eq(D.db().productos.find(p=>p.nombre===product.nombre).porcion,product.porcion)});
+t('Un cliente no puede adelantar o fijar el reloj, ni restablecer datos',()=>{D.db().session={id:'cliente-prueba',rol:'cliente'};D.commit();throws(()=>V.adelantar(5),'msg');throws(()=>V.simularHora(f(60000)),'msg');throws(()=>V.restaurarHora(),'msg');throws(()=>V.restablecerDatos(),'msg');throws(()=>D.reset());eq(D.db().config.offset,0);D.logout()});
+t('Un cliente no puede forzar un pago fallido',()=>{D.db().session={id:'cliente-prueba',rol:'cliente'};D.commit();throws(()=>V.pagar('reserva-inexistente',true,'PSE'),'msg');D.logout()});
+t('Un administrador puede adelantar el reloj y forzar un pago fallido',()=>{D.db().session={id:'admin-demo',rol:'admin'};D.commit();V.adelantar(1);if(D.db().config.offset<60000)throw new Error('el reloj no avanzó');V.restaurarHora();const reserva=V.iniciarReserva(base({documento:'44556677',correo:'admin.prueba@correo.com',telefono:'3002223344',mesa_id:'m25'}));eq(V.pagar(reserva.id,true,'PSE'),false);eq(V.pagoDe(reserva.pago_id).estado,'fallido');D.logout()});
+t('La hora demo no se aplica a una sesión de cliente',()=>{D.db().session={id:'admin-demo',rol:'admin'};D.commit();V.simularHora(f(3600000));D.db().session={id:'cliente-prueba',rol:'cliente'};D.commit();if(Math.abs(D.now()-Date.now())>1000)throw new Error('la hora demo sigue activa para el cliente');D.logout()});
+D.db().session={id:'admin-demo',rol:'admin'};D.commit();
 t('Capacidad excedida se rechaza',()=>throws(()=>V.iniciarReserva(base({personas:99})),'personas'));
 t('Reserva inicia en pendiente_pago',()=>{r=V.iniciarReserva(base());eq(r.estado,'pendiente_pago')});
 t('Método de pago obligatorio: reserva y mesa permanecen sin cambios',()=>{throws(()=>V.pagar(r.id,false),'msg');eq(V.res(r.id).estado,'pendiente_pago');eq(V.pagoDe(r.pago_id).metodo,null);eq(est('m20'),'disponible')});
