@@ -394,6 +394,15 @@ header{padding-top:max(.6rem,env(safe-area-inset-top))!important}
 table{display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
 h1{font-size:1.65rem!important;line-height:1.15}
 }
+@media(max-width:767px){
+body.auth-active #app{max-width:none;padding:0!important}
+.auth-stage{min-height:100svh;padding:1rem .75rem}
+.auth-grid{grid-template-columns:minmax(0,1fr);width:min(440px,100%);border-radius:14px}
+.auth-aside{min-height:0;gap:1.5rem;padding:1.25rem;border-right:0;border-bottom:1px solid var(--line)}
+.auth-title{font-size:clamp(1.7rem,8vw,2.4rem);line-height:1.08;max-width:none;margin:.65rem 0}
+.auth-copy{font-size:.88rem}
+.auth-form-wrap{padding:1.25rem}
+}
 @media(prefers-reduced-motion:reduce){.msheet,.modal-backdrop>*{animation:none!important}}
 </style>
 </head>
