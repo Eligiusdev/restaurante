@@ -1,0 +1,174 @@
+Actividad: tres cupos, ocho estudiantes
+
+En un curso de programación hay ocho estudiantes y solo tres cupos disponibles para un programa de acompañamiento. Tu equipo debe usar una IA para proponer quiénes deberían recibirlos.
+
+Estos son los datos del caso ficticio. Las notas van de 0 a 5 y se aprueba con 3.
+
+Estudiante | Nota actual | Asistencia | Lo que cuenta sobre su situación
+Ana | 2,1 | 95 % | Estudia por su cuenta, pero sigue sin comprender varios conceptos básicos.
+Bruno | 2,8 | 65 % | Sus turnos de trabajo coinciden con algunas clases.
+Camila | 2,8 | 100 % | Resuelve los ejercicios con ayuda de una compañera, pero se bloquea cuando trabaja sola.
+Diego | 1,9 | 60 % | Ha faltado para cuidar a un familiar. Quiere continuar, pero se siente muy atrasado.
+Elena | 2,7 | 100 % | Comprende las explicaciones, aunque comete errores al programar.
+Felipe | 4,3 | 95 % | Quiere profundizar en temas avanzados porque el curso le resulta sencillo.
+Gabriela | 2,6 | 80 % | Comparte computador en casa y casi no puede practicar.
+Hugo | 2,5 | 90 % | Entrega las actividades, pero le cuesta explicar cómo funciona el código que presenta.
+
+ELECCIÓN INDIVIDUAL
+[Sin completar]
+Criterio: [Sin completar]
+
+PRIMERA CONSULTA
+Actividad: tres cupos, ocho estudiantes
+
+En un curso de programación hay ocho estudiantes y solo tres cupos disponibles para un programa de acompañamiento. Tu equipo debe usar una IA para proponer quiénes deberían recibirlos.
+
+Estos son los datos del caso ficticio. Las notas van de 0 a 5 y se aprueba con 3.
+
+Estudiante | Nota actual | Asistencia | Lo que cuenta sobre su situación
+Ana | 2,1 | 95 % | Estudia por su cuenta, pero sigue sin comprender varios conceptos básicos.
+Bruno | 2,8 | 65 % | Sus turnos de trabajo coinciden con algunas clases.
+Camila | 2,8 | 100 % | Resuelve los ejercicios con ayuda de una compañera, pero se bloquea cuando trabaja sola.
+Diego | 1,9 | 60 % | Ha faltado para cuidar a un familiar. Quiere continuar, pero se siente muy atrasado.
+Elena | 2,7 | 100 % | Comprende las explicaciones, aunque comete errores al programar.
+Felipe | 4,3 | 95 % | Quiere profundizar en temas avanzados porque el curso le resulta sencillo.
+Gabriela | 2,6 | 80 % | Comparte computador en casa y casi no puede practicar.
+Hugo | 2,5 | 90 % | Entrega las actividades, pero le cuesta explicar cómo funciona el código que presenta.
+
+Instrucción:
+Selecciona a los tres estudiantes que más necesitan el acompañamiento. Justifica cada elección y explica por qué dejaste fuera a los demás
+
+PRIMERA RESPUESTA
+**Estudiantes seleccionados para los tres cupos:**
+
+* **Ana (Nota: 2,1 | Asistencia: 95 %):** Presenta un alto nivel de compromiso (excelente asistencia y estudio autónomo), pero tiene un bloqueo conceptual profundo. Es el perfil ideal para un acompañamiento, ya que su esfuerzo no se traduce en resultados y la intervención de un tutor puede destrabar su aprendizaje rápidamente.
+* **Diego (Nota: 1,9 | Asistencia: 60 %):** Es el estudiante con mayor riesgo de deserción y la nota más baja. Su problema de asistencia se debe a una calamidad doméstica, no a falta de interés ("quiere continuar"). Necesita un plan de rescate académico personalizado para recuperar el ritmo y la motivación.
+* **Camila (Nota: 2,8 | Asistencia: 100 %):** Tiene una asistencia perfecta y está muy cerca de aprobar, pero sufre de dependencia académica. El programa de acompañamiento es clave para darle la seguridad psicológica y las herramientas metodológicas que necesita para programar de forma autónoma.
+
+---
+
+**Justificación de los estudiantes no seleccionados:**
+
+* **Felipe (Nota: 4,3):** Su necesidad es de enriquecimiento, no de nivelación. Al tener recursos limitados (solo tres cupos), la prioridad debe ser evitar que los estudiantes en riesgo reprueben, no adelantar a los que ya dominan el tema.
+* **Gabriela (Nota: 2,6):** Su principal barrera es de infraestructura (no tiene acceso exclusivo a un computador), no de capacidad cognitiva. Su caso se resolvería mejor facilitándole acceso a los laboratorios de la institución o con un préstamo de equipo, en lugar de gastar un cupo de tutoría.
+* **Bruno (Nota: 2,8):** Su problema de rendimiento está directamente ligado a un conflicto de horarios laborales. Es probable que tampoco pueda asistir a las sesiones de acompañamiento. Su situación requiere flexibilidad administrativa (acceso a clases grabadas o plazos extendidos).
+* **Elena (Nota: 2,7):** Asiste a todas las clases y comprende los conceptos. Sus errores al programar son de práctica y detalle, algo que puede superar por su cuenta resolviendo más ejercicios, ya que no tiene un bloqueo conceptual grave.
+* **Hugo (Nota: 2,5):** El hecho de que entregue actividades pero no sepa explicar el código sugiere que podría estar copiando las soluciones o usando herramientas sin entenderlas. Aunque un tutor le ayudaría, los cupos están mejor invertidos en estudiantes que demuestran un esfuerzo genuino pero están estancados (como Ana) o en riesgo de abandono (como Diego).
+
+OBSERVACIONES
+Nuevo enfoque: Criterio de Equidad y Barreras Externas (Socioeconómicas/Familiares)**
+
+Bajo esta nueva perspectiva, el criterio principal no es la asistencia perfecta ni el bloqueo puramente cognitivo, sino el impacto de las barreras sistémicas. Se prioriza a los estudiantes que demuestran potencial y esfuerzo, pero cuyo entorno (trabajo, recursos limitados, responsabilidades de cuidado) los está expulsando del sistema educativo.
+
+Suposiciones clave para este escenario:
+
+1. Flexibilidad del acompañamiento: Asumimos que este programa no tiene un horario rígido que choque nuevamente con sus vidas. Es un apoyo adaptable (virtual, asincrónico o en fines de semana).
+2. Apoyo integral:Asumimos que las sesiones incluyen acceso garantizado a los equipos o laboratorios de la institución.
+3. Potencial oculto: Se asume que mantener notas entre 2,6 y 2,8 bajo condiciones de vida adversas demuestra una resiliencia y capacidad analítica superiores a la media.
+
+Los tres estudiantes seleccionados bajo este enfoque:
+
+Bruno (Nota: 2,8 | Asistencia: 65 %):
+Justificación: Es un caso de altísimo potencial. Lograr un 2,8 (casi aprobando) faltando al 35 % de las clases por estar trabajando demuestra que comprende rápido y es autodidacta. Si el acompañamiento se adapta a sus turnos laborales, compensará las clases perdidas y aprobará con facilidad. Castigarlo por trabajar sería un sesgo del sistema.
+
+
+Gabriela (Nota: 2,6 | Asistencia: 80 %):
+Justificación: Su barrera es netamente material (falta de hardware). La programación requiere "horas de vuelo" en el teclado. Asignarle el cupo le garantiza horas de acceso a un equipo junto a un tutor. Su 2,6 sin poder practicar en casa indica que retiene muy bien la teoría.
+
+
+Diego (Nota: 1,9 | Asistencia: 60 %):
+Justificación:Desde una visión de equidad, su calamidad doméstica lo pone en la posición de mayor vulnerabilidad. El sistema debe compensar su rol de cuidador. Un tutor asignado que le haga un resumen focalizado de lo que se pierde en clase es la única forma de garantizar su derecho a la educación sin que deba abandonar a su familiar.
+
+
+
+Preguntas críticas que el equipo debería hacerse antes de decidir (Preguntas a conservar):
+
+Sobre la logística del programa: ¿El acompañamiento exige asistencia en horarios fijos? Si la respuesta es sí, dárselo a Bruno o Diego es "quemar" los cupos, ya que chocarán con el trabajo y el familiar enfermo. En ese caso, los cupos deberían ir a quienes sí tienen el tiempo pero no la capacidad (Ana, Camila, Elena).
+Sobre el caso de Hugo:Asumimos en el escenario anterior que "copiaba". Pero, ¿y si Hugo tiene ansiedad social, neurodivergencia, o barreras de expresión oral que le impiden explicar su código, aunque lo haya escrito él? Validar esto cambiaría por completo su necesidad de apoyo.
+Sobre el caso de Camila: Resuelve ejercicios con ayuda pero se bloquea sola. ¿Es falta de conocimiento o es el "Síndrome del Impostor" y terror a equivocarse? Quizás no necesita un tutor de programación, sino un mentor de confianza.
+
+SEGUNDA CONSULTA
+Actividad: tres cupos, ocho estudiantes
+
+En un curso de programación hay ocho estudiantes y solo tres cupos disponibles para un programa de acompañamiento. Tu equipo debe usar una IA para proponer quiénes deberían recibirlos.
+
+Estos son los datos del caso ficticio. Las notas van de 0 a 5 y se aprueba con 3.
+
+Estudiante | Nota actual | Asistencia | Lo que cuenta sobre su situación
+Ana | 2,1 | 95 % | Estudia por su cuenta, pero sigue sin comprender varios conceptos básicos.
+Bruno | 2,8 | 65 % | Sus turnos de trabajo coinciden con algunas clases.
+Camila | 2,8 | 100 % | Resuelve los ejercicios con ayuda de una compañera, pero se bloquea cuando trabaja sola.
+Diego | 1,9 | 60 % | Ha faltado para cuidar a un familiar. Quiere continuar, pero se siente muy atrasado.
+Elena | 2,7 | 100 % | Comprende las explicaciones, aunque comete errores al programar.
+Felipe | 4,3 | 95 % | Quiere profundizar en temas avanzados porque el curso le resulta sencillo.
+Gabriela | 2,6 | 80 % | Comparte computador en casa y casi no puede practicar.
+Hugo | 2,5 | 90 % | Entrega las actividades, pero le cuesta explicar cómo funciona el código que presenta.
+
+Instrucción:
+Selecciona a los tres estudiantes que más necesitan el acompañamiento. Justifica cada elección y explica por qué dejaste fuera a los demás
+
+Información adicional sobre el programa:
+PROGRAMA B: Continuidad en el curso
+Ocho semanas de acompañamiento para favorecer la continuidad y evitar el abandono. Incluye tutorías semanales con horarios flexibles y seis horas adicionales de acceso a computador por semana. Los ocho estudiantes pueden asistir al menos a uno de los horarios. No incluye apoyo económico ni préstamo de computadores para la casa. El repaso para el examen está abierto a todos y es independiente de estos tres cupos.
+
+SEGUNDA RESPUESTA
+**Estudiantes seleccionados para el Programa B:**
+
+* **Gabriela (Nota: 2,6 | Asistencia: 80 %):** Su principal barrera es técnica y logística, no cognitiva. El Programa B ofrece exactamente el recurso que ella necesita para superar su obstáculo: **seis horas adicionales de acceso a computador por semana**. Al darle las herramientas para practicar, es altamente probable que alcance el 3,0.
+* **Diego (Nota: 1,9 | Asistencia: 60 %):** Representa el caso de mayor riesgo de deserción (nota más baja y desmotivación por atraso). Como el programa busca "evitar el abandono" y cuenta con **horarios flexibles**, Diego puede recibir la tutoría intensiva que necesita sin que esto colisione irreversiblemente con su responsabilidad como cuidador.
+* **Ana (Nota: 2,1 | Asistencia: 95 %):** Demuestra un compromiso altísimo, pero padece un bloqueo conceptual severo. Su esfuerzo autónomo no está dando resultados. Las **tutorías semanales** son la intervención exacta para corregir sus bases lógicas, evitando que la frustración la lleve a abandonar el curso a pesar de su disciplina.
+
+**Estudiantes no seleccionados y justificación:**
+
+* **Bruno (Nota: 2,8):** Aunque las tutorías flexibles le ayudarían a compensar las clases perdidas por su trabajo, su nota actual indica que retiene bien la información y tiene capacidad de estudio autónomo. Con un 2,8 está muy cerca de aprobar, por lo que el riesgo de abandono es menor comparado con Diego o Ana.
+* **Camila (Nota: 2,8):** Su barrera es la inseguridad (se bloquea sola), pero asiste a todas las clases y está a solo dos décimas de aprobar. Puede fortalecer su confianza participando en el espacio de repaso para el examen, el cual está abierto a todos los estudiantes, sin consumir un cupo crítico de nivelación.
+* **Elena (Nota: 2,7):** Comprende las explicaciones y tiene asistencia perfecta. Sus errores de sintaxis o lógica al programar se resuelven con práctica continua, algo que puede gestionar en casa o en los repasos generales, sin requerir una tutoría personalizada intensiva.
+* **Hugo (Nota: 2,5):** El hecho de que entregue código que no sabe explicar requiere una intervención del docente (para descartar copia o evaluar problemas de expresión), pero no lo perfila como el candidato ideal para un programa enfocado en rescate por riesgo inminente de abandono o falta de recursos tecnológicos.
+* **Felipe (Nota: 4,3):** Su motivación es adelantar temas y profundizar. Al tener recursos limitados, el programa debe enfocarse estrictamente en la retención de estudiantes vulnerables, no en la potenciación de los más aventajados.
+
+COMPARACIÓN
+Aquí tienes el análisis de cómo evolucionó la decisión al incorporar las reglas específicas del "Programa B" en comparación con la primera respuesta general.
+
+**Qué cambió (Los movimientos en la lista)**
+
+* **Entró Gabriela (Reemplazando a Camila):**
+* *El cambio:* En el primer escenario, Gabriela quedó fuera porque un tutor no resolvía su problema de hardware. Camila había entrado por su inseguridad. En el Programa B, Gabriela tomó ese lugar.
+* *Por qué:* La revelación de que el programa incluye "seis horas de acceso a computador" cambió todo. Hizo un *match* perfecto con la barrera de Gabriela. A su vez, saber que hay un "repaso abierto a todos" permitió derivar a Camila hacia ese espacio gratuito, liberando el cupo.
+
+
+* **El motivo para descartar a Bruno:**
+* *El cambio:* Al principio, se descartó a Bruno asumiendo que sus turnos de trabajo chocarían también con las tutorías. En el Programa B, se le descartó porque su rendimiento (2,8) demuestra que no está en riesgo inminente.
+* *Por qué:* Como el Programa B anunció "horarios flexibles", el tiempo dejó de ser excusa para Bruno. El criterio para dejarlo fuera pasó a ser su autonomía: si saca 2,8 faltando al 35% de las clases, tiene buena capacidad de aprendizaje independiente frente a otros más críticos.
+
+
+
+**Qué permaneció (Las constantes)**
+
+* **Diego es intocable en la selección:**
+* *Por qué:* Es el núcleo del problema de retención. Con 1,9 de nota, es el estudiante con el riesgo de abandono más severo. En cualquier escenario (académico puro, de equidad, o bajo las reglas del Programa B), el sistema debe priorizar rescatar al alumno que está a punto de desertar por una calamidad familiar.
+
+
+* **Ana se mantiene como el perfil ideal para tutoría:**
+* *Por qué:* Su diagnóstico no cambió. Alta asistencia (95%) y baja nota (2,1) es la definición exacta de un bloqueo cognitivo. Ana representa al estudiante que hace todo lo que el sistema le pide, pero fracasa por la metodología. La tutoría es exactamente lo que necesita.
+
+
+* **Felipe, Elena y Hugo siempre quedaron fuera:**
+* *Por qué:* Felipe siempre representó "enriquecimiento" (no rescate). Elena siempre representó "falta de práctica" (no bloqueo de comprensión). Hugo siempre representó un "problema de evaluación o integridad" (necesita al profesor, no a un tutor). Las reglas del Programa B no alteraron sus diagnósticos subyacentes.
+
+
+
+**El "Por qué" general de la evolución**
+
+La toma de decisiones pasó de ser un análisis de **necesidad abstracta** a un ejercicio de **asignación eficiente de recursos**.
+
+Cuando no sabíamos qué era el programa, elegimos basándonos solo en quién sufría más académicamente. Al conocer las características del Programa B (PC extra, flexibilidad, objetivo anti-deserción, repasos abiertos), la IA operó como un administrador de recursos: conectó la "herramienta" específica del programa con la "falla" específica del estudiante, maximizando el retorno de inversión de esos tres cupos.
+
+CONCLUSIÓN
+Para que la IA pasara de una selección genérica a una decisión estratégica, necesitabas delimitar su "campo de juego". Una IA optimiza variables; si solo le pides elegir "al que más lo necesita", usará criterios estándar. Al definir el Programa B, le entregaste las reglas exactas para administrar recursos:
+
+* **El objetivo:** "Evitar el abandono" cambió el enfoque de premiar el esfuerzo a priorizar el rescate de quienes estaban en riesgo crítico (Diego).
+* **Los recursos:** Especificar las "6 horas de computador" permitió incluir a Gabriela, haciendo *match* exacto entre su barrera y la solución.
+* **Las reglas operativas:** Los "horarios flexibles" eliminaron la suposición de que los estudiantes que trabajan o cuidan familiares no podrían asistir.
+* **Las alternativas:** Aclarar que existían "repasos abiertos" ofreció una ruta para derivar a estudiantes con dudas leves (Camila), protegiendo los cupos principales.
+
+Definir restricciones reales permite decisiones eficientes.
